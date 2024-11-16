@@ -1,31 +1,51 @@
+/* Body Styling */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #282c34;
+    background-color: #282c34; /* Dark background */
     color: white;
     font-family: 'Arial', sans-serif;
+    margin: 0;
 }
 
+/* Container for both clocks */
 .container {
     text-align: center;
 }
 
+/* Digital Clock Styling */
 .digital-clock {
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-.analog-clock {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border: 10px solid #fff;
-    border-radius: 50%;
-    background: #222;
+#time {
+    font-weight: bold;
+    font-size: 3rem;
 }
 
+#date {
+    font-size: 1.2rem;
+    color: #aaa;
+}
+
+/* Analog Clock Styling */
+.analog-clock {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border: 10px solid #fff; /* White border */
+    border-radius: 50%;
+    background: #222; /* Dark background for the clock */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hands Styling */
 .hand {
     position: absolute;
     background: #fff;
@@ -33,22 +53,88 @@ body {
     bottom: 50%;
     left: 50%;
     transform: translateX(-50%);
+    transition: transform 0.05s ease-in-out;
 }
 
 .hour {
     height: 50px;
     width: 8px;
-    background: #ff4d00;
+    background: #ff4d00; /* Orange color for hour hand */
 }
 
 .minute {
     height: 70px;
     width: 5px;
-    background: #00ff80;
+    background: #00ff80; /* Green color for minute hand */
 }
 
 .second {
     height: 90px;
     width: 2px;
-    background: #00aaff;
+    background: #00aaff; /* Blue color for second hand */
+}
+
+/* Hour Numbers - Added to make clock more readable */
+.hour-markers {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.hour-number {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    transform-origin: center center;
+}
+
+#hour1 { transform: rotate(30deg) translateY(-110px); }
+#hour2 { transform: rotate(60deg) translateY(-110px); }
+#hour3 { transform: rotate(90deg) translateY(-110px)rotate(270deg); }
+#hour4 { transform: rotate(120deg) translateY(-110px) rotate(180deg); }
+#hour5 { transform: rotate(150deg) translateY(-110px) rotate(180deg); }
+#hour6 { transform: rotate(180deg) translateY(-110px) rotate(180deg); }
+#hour7 { transform: rotate(210deg) translateY(-110px) rotate(180deg); }
+#hour8 { transform: rotate(240deg) translateY(-110px) rotate(180deg); }
+#hour9 { transform: rotate(270deg) translateY(-110px)rotate(90deg); ; }
+#hour10 { transform: rotate(300deg) translateY(-110px); }
+#hour11 { transform: rotate(330deg) translateY(-110px); }
+#hour12 { transform: rotate(0deg) translateY(-110px); }
+
+/* Minute Ticks between the hour markers */
+.minute-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.minute-lines div {
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background-color: #fff;
+    top: 5%;
+    left: 50%;
+    transform-origin: center center;
+    transform: rotate(0deg);
+}
+
+/* Adding tick marks for the minute markers */
+.minute-lines div:nth-child(odd) {
+    height: 12px; /* Larger tick marks for minute markers */
+}
+
+/* Animation for the clock hands */
+@keyframes rotateClockwise {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
